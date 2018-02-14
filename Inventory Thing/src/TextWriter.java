@@ -1,8 +1,8 @@
 import java.io.*;
 
-public class textWriter 
+public class TextWriter 
 {
-    public static void main(String [] args) 
+    public static void refresh() 
     	{
         String fileName = "Inventory.txt";
         try {
@@ -13,8 +13,14 @@ public class textWriter
             	bufferedWriter.newLine();
             	bufferedWriter.write("Title:           Skus:           Console:        Wholesale:           Sell:            Copies:");
             	bufferedWriter.newLine();
-            	bufferedWriter.write("Wasssup");
-            	bufferedWriter.write(" im very tired.");
+            	for(int i = 0; i < InventoryMain.store.size(); i++)
+            		{
+            			
+            			bufferedWriter.write(InventoryMain.store.get(i).getName());
+            			bufferedWriter.write(" im very tired.");
+            			bufferedWriter.newLine();
+            		}
+            	
             	bufferedWriter.close();
         	}
         catch(IOException ex) 

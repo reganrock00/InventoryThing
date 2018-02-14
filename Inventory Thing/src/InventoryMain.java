@@ -6,6 +6,12 @@ public class InventoryMain
 		public static ArrayList <Game> store = new ArrayList <Game>();
 		public static void main(String[] args)
 			{
+				fillArray();
+				TextWriter.refresh();
+			}
+		
+		public static void fillArray()
+			{
 				
 				store.add(new Game("Monster Hunter: World",  01234, "XBOX",  20, 60));
 				store.add(new Game("Fortnite",  01235, "XBOX", 0, 60));

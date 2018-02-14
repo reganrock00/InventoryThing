@@ -4,11 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.*;
-public class employee
+public class Employee
 	{
 		static ArrayList<Game> stock = new ArrayList<Game>();// stock
 		private static int userChoice;
-		public static void main(String[] args)
+		public static void employ()
 			{
 				
 				Scanner file = new Scanner(new File("HereItIs.txt"));

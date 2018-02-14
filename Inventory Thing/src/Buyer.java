@@ -1,12 +1,12 @@
 import java.io.*;
 import java.util.*;
 
-public class buyer
+public class Buyer
 	{
 		private static boolean stillShopping;
 		private static int userChoice, pageL, i, listMarker;
 		private static ArrayList <Game> shoppingCart = new ArrayList <Game>();
-		public static void main(String[] args)
+		public static void buy()
 			{
 			greetUser();
 			while(stillShopping)

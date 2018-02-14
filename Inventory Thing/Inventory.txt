@@ -1,2 +1,9 @@
-Title:           Skus:           Console:        Wholesale:           Sell:            Copies: here is some text.
-Wasssup im very tired.
+Inventory
+
+Title:           Skus:           Console:        Wholesale:           Sell:            Copies:
+Monster Hunter: World im very tired.
+Fortnite im very tired.
+Destiny im very tired.
+Hitman im very tired.
+Madden im very tired.
+Minecraft im very tired.
