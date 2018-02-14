@@ -4,7 +4,7 @@ import java.util.*;
 public class buyer
 	{
 		private static boolean stillShopping;
-		private static int userChoice;
+		private static int userChoice, pageL, i, listMarker;
 		private static ArrayList <Game> shoppingCart = new ArrayList <Game>();
 		public static void main(String[] args)
 			{
@@ -16,7 +16,7 @@ public class buyer
 					{
 						case 1:
 							{
-							//createList();
+							createList();
 							break;
 							}
 						case 2:
@@ -40,11 +40,13 @@ public class buyer
 							 * help with the writing to text file stuff
 							 * chill out*/
 							stillShopping = false;
+							InventoryMain.main(args);
 							break;
 							}
 						case 5:
 							{
-							pay();	
+							pay();
+							break;
 							}
 					}
 				}
@@ -87,6 +89,25 @@ public class buyer
 				}
 			}
 		
+		private static void createList()
+			{
+			System.out.println("Here is a list of our items:");
+			System.out.println();
+			int fourth = InventoryMain.store.size() / 4;
+			for (i = 0, pageL = 1, listMarker = i; i < InventoryMain.store.size(); i++)
+				{
+					if(i > 0  && i % fourth == 0)
+						{
+						addToCartL();
+						listMarker = i;
+						}
+					else
+						{
+						System.out.println(i + ") " + InventoryMain.store.get(i).getName() + " for the " + InventoryMain.store.get(i).getConsole() + ".");
+						}
+				}
+			}
+		
 		private static void checkCart()
 			{
 			if(shoppingCart.size() > 0)
@@ -118,6 +139,42 @@ public class buyer
 				System.out.println();
 				System.out.println("Your shopping cart doesn't contain anything! You can't pay now!");
 				}
+			}
+		private static void addToCartL()
+			{
+				System.out.println("This is the end of page " + pageL + ". Would you like to see more games?");
+				System.out.println();
+				System.out.println("1) Yes.");
+				System.out.println("2) I would like to add a game on this page to my shopping cart.");
+				System.out.println("3) No.");
+				try
+					{
+						Scanner userL = new Scanner(System.in);
+						int choice = userL.nextInt();
+						if(choice > 3 || choice < 0)
+							{
+							System.out.println("That's not a valid answer!");
+							addToCartL();
+							}
+						else
+							{
+							switch(choice)
+								{
+									case 2:
+										{
+										System.out.println("Which game from this page would you like to purchase?");
+										System.out.println();
+										//for(int j = i; j < )
+										//fix this ^^^
+										}
+								}
+							}
+					}
+				catch(InputMismatchException catcher)
+					{
+						System.out.println("That's not a valid answer!");
+						addToCartL();
+					}
 			}
 
 	}
