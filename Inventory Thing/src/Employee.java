@@ -1,45 +1,93 @@
 import java.util.*;
 import java.io.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.*;
 public class Employee
 	{
-		static ArrayList<Game> stock = new ArrayList<Game>();// stock
 		private static int userChoice;
-		public static void employ()
-			{
-				
-				Scanner file = new Scanner(new File("HereItIs.txt"));
-				while(file.hasNextLine())
-					{
-						String list =file.nextLine();
-						String [] reallist= list.split(" ");
-						stock.add(new Game(reallist[0],reallist[1],reallist[2],reallist[3],reallist[4],reallist[5],reallist[6]));
-					} 
-				
-				System.out.println("Hi, here is the stock for us.");
-				for(int i=0; i<stock.size();i++)
-					{
-						System.out.println(Games.roster.get(i).getName()+Games.roster.get(i).getSkus()+Games.roster.get(i).getConsole()+Games.roster.get(i).getWhole()+Games.roster.get(i).getSell());
-					}
-				
-				System.out.println("What do you want to do?");
-				System.out.println("1. Buy Stock");
-				System.out.println("2. Exit the website");
-				Scanner userInput = new Scanner(System.in);
-				userChoice = userInput.nextInt();
-				if(userChoice==1)
-					{
-						
-					}
-				else if(userChoice
-						==2)
-					{
-						System.out.println("Bye bye!!!");
-					}
-				
-			}
+		private static int buyingstockChoice;
+		private static int password;
+		private static boolean keepAsking=true;
+		
+		public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException 
+		{
+			InventoryMain.fillArray();
+			meetTHeUsers();
+			
+			
+		}
 
+		public static void meetTHeUsers()throws FileNotFoundException, UnsupportedEncodingException
+		{
+			System.out.println("what is the password");
+				Scanner userInput = new Scanner(System.in);
+				password=userInput.nextInt();
+				if(password==1234568)
+					{
+						askUserWhatToDo();
+					}
+				else
+					{
+						System.out.println("Wrong, try it again");
+						meetTHeUsers();
+					}
+		}
+		public static void askUserWhatToDo() throws FileNotFoundException, UnsupportedEncodingException
+		{
+			System.out.println("Hi, here is the stock for us.");
+			for(int i=0; i<InventoryMain.store.size();i++)
+				{
+					System.out.println(InventoryMain.store.get(i).getName()+" "+InventoryMain.store.get(i).getSkus()+" "+InventoryMain.store.get(i).getConsole()+" "+InventoryMain.store.get(i).getWhole()+" "+InventoryMain.store.get(i).getSell());
+				}
+			
+			System.out.println("What do you want to do?");
+			System.out.println("1. Buy Stock");
+			System.out.println("2. Exit the website");
+			while(keepAsking) 
+				{
+					
+					Scanner userInput1 = new Scanner(System.in);
+					userChoice = userInput1.nextInt();
+					if(userChoice==1)
+						{
+							buyStock();
+							break;
+						}
+					else if(userChoice==2)
+						{
+							System.out.println("Bye bye!!!");
+							break;
+						}
+					else
+						{
+							System.out.println("Try it again");
+						}
+				}
+		}
+		private static void buyStock() throws FileNotFoundException, UnsupportedEncodingException
+			{
+				System.out.println("What stock do you want to buy?");
+				for(int i=0; i<InventoryMain.store.size();i++)
+					{
+						System.out.println(i+ InventoryMain.store.get(i).getName());
+					}
+				Scanner userInput2 = new Scanner(System.in);
+				buyingstockChoice= userInput2.nextInt();
+				
+				try 
+					{ 
+						PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("Inventory.txt", true)));
+						out.println("");
+						out.println("the text");
+						out.close();
+					}
+			  catch (IOException e) 
+					{  
+						println(e);
+					}
+					}
+			private static void println(IOException e)
+				{
+					System.out.println("oops,there is a mistake.");
+				}
+	
 	}
