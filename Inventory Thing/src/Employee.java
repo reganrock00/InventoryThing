@@ -6,23 +6,15 @@ import java.io.IOException;
 import java.text.*;
 public class Employee
 	{
-		static ArrayList<Game> stock = new ArrayList<Game>();// stock
 		private static int userChoice;
 		public static void employ()
 			{
 				
-				Scanner file = new Scanner(new File("HereItIs.txt"));
-				while(file.hasNextLine())
-					{
-						String list =file.nextLine();
-						String [] reallist= list.split(" ");
-						stock.add(new Game(reallist[0],reallist[1],reallist[2],reallist[3],reallist[4],reallist[5],reallist[6]));
-					} 
 				
 				System.out.println("Hi, here is the stock for us.");
-				for(int i=0; i<stock.size();i++)
+				for(int i=0; i<InventoryMain.store.size();i++)
 					{
-						System.out.println(Games.roster.get(i).getName()+Games.roster.get(i).getSkus()+Games.roster.get(i).getConsole()+Games.roster.get(i).getWhole()+Games.roster.get(i).getSell());
+						System.out.println(InventoryMain.store.get(i).getName()+Games.roster.get(i).getSkus()+Games.roster.get(i).getConsole()+Games.roster.get(i).getWhole()+Games.roster.get(i).getSell());
 					}
 				
 				System.out.println("What do you want to do?");
