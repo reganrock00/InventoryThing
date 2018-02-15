@@ -4,7 +4,7 @@ import java.text.*;
 public class Employee
 	{
 		private static int userChoice;
-		
+		private static int buyingstockChoice;
 		private static int password;
 		private static boolean keepAsking=true;
 		
@@ -66,7 +66,12 @@ public class Employee
 		private static void buyStock() throws FileNotFoundException, UnsupportedEncodingException
 			{
 				System.out.println("What stock do you want to buy?");
-				
+				for(int i=0; i<InventoryMain.store.size();i++)
+					{
+						System.out.println(i+ InventoryMain.store.get(i).getName());
+					}
+				Scanner userInput2 = new Scanner(System.in);
+				buyingstockChoice= userInput2.nextInt();
 				
 				try 
 					{ 
