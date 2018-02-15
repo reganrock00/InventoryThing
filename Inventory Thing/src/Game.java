@@ -2,12 +2,12 @@
 public class Game
 	{
 		private String name;
-		private int skus;
+		private String skus;
 		private String console;
-		private int whole;
-		private int sell;
-		private int copies;
-		public Game(String n, int sk, String c, int w, int s, int co)
+		private String whole;
+		private String sell;
+		private String copies;
+		public Game(String n, String sk, String c, String w, String s, String co)
 		{
 			name = n;
 			skus = sk;
@@ -16,7 +16,7 @@ public class Game
 			sell = s;
 			copies = co;
 		}
-		public int getCopies()
+		public String getCopies()
 			{
 				return copies;
 			}
@@ -32,7 +32,7 @@ public class Game
 			{
 				this.name = name;
 			}
-		public int getSkus()
+		public String getSkus()
 			{
 				return skus;
 			}
@@ -48,7 +48,7 @@ public class Game
 			{
 				this.console = console;
 			}
-		public int getWhole()
+		public String getWhole()
 			{
 				return whole;
 			}
@@ -56,7 +56,7 @@ public class Game
 			{
 				this.whole = whole;
 			}
-		public int getSell()
+		public String getSell()
 			{
 				return sell;
 			}
