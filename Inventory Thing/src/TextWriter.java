@@ -8,7 +8,6 @@ public class TextWriter
         try {
             	FileWriter fileWriter = new FileWriter(fileName);
             	BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            	FileOutputStream pout = new FileOutputStream(fileName);
             	bufferedWriter.write("Inventory");
             	bufferedWriter.newLine();
             	bufferedWriter.newLine();
@@ -18,16 +17,7 @@ public class TextWriter
             		{
             			
             			bufferedWriter.write(InventoryMain.store.get(i).getName());
-            			bufferedWriter.write("        ");
-            			pout.write(InventoryMain.store.get(i).getSkus());
-            			bufferedWriter.write("        ");
-            			bufferedWriter.write(InventoryMain.store.get(i).getConsole());
-            			bufferedWriter.write("        ");
-            			pout.write(InventoryMain.store.get(i).getWhole());
-            			bufferedWriter.write("        ");
-            			pout.write(InventoryMain.store.get(i).getSell());
-            			bufferedWriter.write("        ");
-            			pout.write(InventoryMain.store.get(i).getCopies());
+            			bufferedWriter.write(" im very tired.");
             			bufferedWriter.newLine();
             		}
             	
