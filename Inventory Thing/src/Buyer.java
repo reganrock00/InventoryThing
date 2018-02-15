@@ -7,6 +7,7 @@ public class Buyer
 		private static int userChoice, ok, i, listMarker, pageL;
 		private static String keyword;
 		private static ArrayList <Game> shoppingCart = new ArrayList <Game>();
+		private static ArrayList <Game> searcher = new ArrayList<Game>();
 		public static void buy()
 			{
 			greetUser();
@@ -130,16 +131,36 @@ public class Buyer
 					{
 						if(InventoryMain.store.get(j).getName().contains(keyword))
 							{
-							System.out.println("1) We have " + InventoryMain.store.get(j).getName() + " which matches your search criteria.");
+							searcher.add(InventoryMain.store.get(j));
+							System.out.println("We have " + InventoryMain.store.get(j).getName() + " which matches your search criteria.");
 							}
 					}
 				}
 			catch(InputMismatchException s)
 				{
-				
+					System.out.println("That's not a valid answer!");
+					System.out.println();
+					searchGames();
+				}
+			if(searcher.size() == 0)
+				{
+				System.out.println("Sorry, we couldn't find anything that matches your search criteria.");
+				}
+			else
+				{
+				System.out.println();
+				System.out.println("Here's what I found:");
+				System.out.println();
+				for(int j = 0, searchIn = 1; j < searcher.size(); j++, searchIn++)
+					{
+					System.out.println(searcher.get(j).getName());
+					}
+				System.out.println();
+				System.out.println("Would you like to add any of these to your cart?");
+				addToCartS();
 				}
 			}
-		
+
 		private static void pay()
 			{
 			if(shoppingCart.size() > 0)
@@ -194,6 +215,13 @@ public class Buyer
 						addToCartL();
 					}
 			}
+		
+		private static void addToCartS()
+			{
+			//finish pay, include copies, write to text file
+				
+			}
+		
 		private static void askIfBuyAgain()
 			{
 				System.out.println("Would you like to add another game from this list?");

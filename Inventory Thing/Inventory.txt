@@ -1,19 +1,20 @@
 Inventory
 
 Title:           Skus:           Console:        Wholesale:           Sell:            Copies:
-Monster Hunter        01234        XBOX        20        60        10
+Monster Hunter           01234           XBOX             20               60               10
 
 Title:           Skus:           Console:        Wholesale:           Sell:            Copies:
-Fortnite        01235        XBOX        0        60        10
+Fortnite           01235           XBOX             0               60               10
 
 Title:           Skus:           Console:        Wholesale:           Sell:            Copies:
-Destiny        01236        Playstation        4        20        10
+Destiny           01236           Playstation             4               20               10
 
 Title:           Skus:           Console:        Wholesale:           Sell:            Copies:
-Hitman        01237        PC        5        10        10
+Hitman           01237           PC             5               10               10
 
 Title:           Skus:           Console:        Wholesale:           Sell:            Copies:
-Madden        01233        Playstation        1        30        10
+Madden           01233           Playstation             1               30               10
 
 Title:           Skus:           Console:        Wholesale:           Sell:            Copies:
-Minecraft        01232        PC        10        9        10
+Minecraft           01232           PC             10               9               10
+
