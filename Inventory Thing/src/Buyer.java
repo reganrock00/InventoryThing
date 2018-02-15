@@ -4,7 +4,8 @@ import java.util.*;
 public class Buyer
 	{
 		private static boolean stillShopping;
-		private static int userChoice, pageL, i, listMarker;
+		private static int userChoice, ok, i, listMarker, pageL;
+		private static String keyword;
 		private static ArrayList <Game> shoppingCart = new ArrayList <Game>();
 		public static void buy()
 			{
@@ -26,14 +27,14 @@ public class Buyer
 							}
 						case 3:
 							{
-							//searchGames();
+							searchGames();
 							break;
 							}
 						case 4:
 							{
 							System.out.println("Understandable. Have a great day!");
 							stillShopping = false;
-							InventoryMain.main(null);
+							//InventoryMain.main(null);
 							break;
 							}
 						case 5:
@@ -84,21 +85,16 @@ public class Buyer
 		
 		private static void createList()
 			{
+			System.out.println();
 			System.out.println("Here is a list of our items:");
 			System.out.println();
-			int fourth = InventoryMain.store.size() / 4;
-			for (i = 0, pageL = 1, listMarker = i; i < InventoryMain.store.size(); i++)
+			for (i = 0, ok = 1; i < InventoryMain.store.size(); i++)
 				{
-					if(i > 0  && i % fourth == 0)
-						{
-						addToCartL();
-						listMarker = i;
-						}
-					else
-						{
-						System.out.println(i + ") " + InventoryMain.store.get(i).getName() + " for the " + InventoryMain.store.get(i).getConsole() + ".");
-						}
+						System.out.println(ok + ") " + InventoryMain.store.get(i).getName() + " for the " + InventoryMain.store.get(i).getConsole() + ".");
+						ok++;
 				}
+			System.out.println();
+			addToCartL();
 			}
 		
 		private static void checkCart()
@@ -110,14 +106,27 @@ public class Buyer
 				for(int i = 0; i < shoppingCart.size(); i++)
 					{
 					System.out.println();
-					System.out.println(shoppingCart.get(i));
-					System.out.println();
+					System.out.println(InventoryMain.store.get(i).getName() + " for the " + InventoryMain.store.get(i).getConsole() + ".");
 					}
 				}
 			else
 				{
 				System.out.println();
 				System.out.println("Your shopping cart doesn't contain anything!");
+				}
+			}
+		
+		private static void searchGames()
+			{
+			System.out.println("Type in a keyword please.");
+			try
+				{
+				Scanner kW = new Scanner(System.in);
+				keyword = kW.nextLine();
+				}
+			catch(InputMismatchException s)
+				{
+				
 				}
 			}
 		
@@ -135,38 +144,77 @@ public class Buyer
 			}
 		private static void addToCartL()
 			{
-				System.out.println("This is the end of page " + pageL + ". Would you like to see more games?");
+				System.out.println("Which game from this list would you like to add to your shopping cart?");
+				System.out.println("Type in the number of the game now.");
+				System.out.println("If you don't want to buy a game from this list, just type 0.");
 				System.out.println();
-				System.out.println("1) Yes.");
-				System.out.println("2) I would like to add a game on this page to my shopping cart.");
-				System.out.println("3) No.");
 				try
 					{
-						Scanner userL = new Scanner(System.in);
-						int choice = userL.nextInt();
-						if(choice > 3 || choice < 0)
+						Scanner fred = new Scanner(System.in);
+						int choice = fred.nextInt();
+						if(choice <= -1)
 							{
 							System.out.println("That's not a valid answer!");
+							System.out.println();
 							addToCartL();
+							}
+						else if(choice == 0)
+							{
+							System.out.println();
+							System.out.println("Okay, I will return you to the main menu.");
 							}
 						else
 							{
-							switch(choice)
-								{
-									case 2:
-										{
-										System.out.println("Which game from this page would you like to purchase?");
-										System.out.println();
-										//for(int j = i; j < )
-										//fix this ^^^
-										}
-								}
+							shoppingCart.add(InventoryMain.store.get(choice - 1));
+							System.out.println();
+							System.out.println("Okay, I will add that to your cart.");
+							askIfBuyAgain();
 							}
 					}
 				catch(InputMismatchException catcher)
 					{
 						System.out.println("That's not a valid answer!");
+						System.out.println();
 						addToCartL();
+					}
+				catch(IndexOutOfBoundsException cat)
+					{
+						System.out.println("That's not a valid answer!");
+						System.out.println();
+						addToCartL();
+					}
+			}
+		private static void askIfBuyAgain()
+			{
+				System.out.println("Would you like to add another game from this list?");
+				System.out.println("1) Yes.");
+				System.out.println("2) No.");
+				System.out.println();
+				try
+					{
+						Scanner ohBoy = new Scanner(System.in);
+						int yesOrNo = ohBoy.nextInt();
+						if(yesOrNo < 1 || yesOrNo > 2)
+							{
+							System.out.println("That's not a valid answer!");
+							System.out.println();
+							askIfBuyAgain();
+							}
+						else if(yesOrNo == 2)
+							{
+							System.out.println();
+							System.out.println("Okay, I will return you to the main menu.");
+							}
+						else
+							{
+							createList();
+							}
+					}
+				catch(InputMismatchException x)
+					{
+					System.out.println("That's not a valid answer!");
+					System.out.println();
+					askIfBuyAgain();
 					}
 			}
 
