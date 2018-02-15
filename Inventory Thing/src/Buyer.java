@@ -32,15 +32,8 @@ public class Buyer
 						case 4:
 							{
 							System.out.println("Understandable. Have a great day!");
-							System.out.println("yes");
-							/* first start on the createList class because that's an easy thing you can do
-							 * then probably add break to case 5
-							 * then after that enhance case 4 by adding InventoryMain.main(args); to it so
-							 * it can just re-run the main menu after closing out
-							 * help with the writing to text file stuff
-							 * chill out*/
 							stillShopping = false;
-							InventoryMain.main(args);
+							InventoryMain.main(null);
 							break;
 							}
 						case 5:
