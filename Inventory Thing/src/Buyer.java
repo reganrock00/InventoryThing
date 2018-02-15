@@ -119,10 +119,20 @@ public class Buyer
 		private static void searchGames()
 			{
 			System.out.println("Type in a keyword please.");
+			System.out.println();
 			try
 				{
 				Scanner kW = new Scanner(System.in);
 				keyword = kW.nextLine();
+				System.out.println();
+				System.out.println("Let me check if we have that...");
+				for(int j = 0, searchIndex = 1; j < InventoryMain.store.size(); j++)
+					{
+						if(InventoryMain.store.get(j).getName().contains(keyword))
+							{
+							System.out.println("1) We have " + InventoryMain.store.get(j).getName() + " which matches your search criteria.");
+							}
+					}
 				}
 			catch(InputMismatchException s)
 				{
