@@ -8,6 +8,7 @@ public class InventoryMain
 			{
 				fillArray();
 				TextWriter.refresh();
+				Buyer.buy();
 			}
 		
 		public static void fillArray()
