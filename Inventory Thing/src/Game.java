@@ -20,7 +20,7 @@ public class Game
 			{
 				return copies;
 			}
-		public void setCopies(int copies)
+		public void setCopies(String copies)
 			{
 				this.copies = copies;
 			}
@@ -36,7 +36,7 @@ public class Game
 			{
 				return skus;
 			}
-		public void setSkus(int skus)
+		public void setSkus(String skus)
 			{
 				this.skus = skus;
 			}
@@ -52,7 +52,7 @@ public class Game
 			{
 				return whole;
 			}
-		public void setWhole(int whole)
+		public void setWhole(String whole)
 			{
 				this.whole = whole;
 			}
@@ -60,7 +60,7 @@ public class Game
 			{
 				return sell;
 			}
-		public void setSell(int sell)
+		public void setSell(String sell)
 			{
 				this.sell = sell;
 			}
