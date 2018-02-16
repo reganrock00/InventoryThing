@@ -192,16 +192,14 @@ public class Buyer
 				System.out.println("Your payment was approved! Have a nice day!");
 				System.out.println();
 				stillShopping = false;
-				InventoryMain.runProgram();
 				for(int j = 0; j < shoppingCart.size(); j++)
 					{
-					String temp = InventoryMain.store.get(j).getCopies();
-					int temp2 = Integer.parseInt(temp);
-					temp2--;
-					temp += temp2;
-					InventoryMain.store.get(j).setCopies(temp);
+					int temp = Integer.parseInt(InventoryMain.store.get(j).getCopies());
+					String temp2 = String.valueOf(temp--);
+					InventoryMain.store.get(j).setCopies(temp2);
 					}
 				TextWriter.refresh();
+				InventoryMain.runProgram();
 				}
 			else
 				{
