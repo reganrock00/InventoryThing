@@ -5,6 +5,7 @@ public class Employee
 	{
 		private static int userChoice;
 		private static int buyingstockChoice;
+		private static int stockCopies;
 		private static int password;
 		private static boolean keepAsking=true;
 		
@@ -12,8 +13,6 @@ public class Employee
 		{
 
 			meetTheUser();
-			
-			
 		}
 
 		public static void meetTheUser()throws FileNotFoundException, UnsupportedEncodingException
@@ -33,6 +32,7 @@ public class Employee
 		}
 		public static void askUserWhatToDo() throws FileNotFoundException, UnsupportedEncodingException
 		{
+			
 			System.out.println("Hi, here is the stock for us.");
 			for(int i=0; i<InventoryMain.store.size();i++)
 				{
@@ -65,29 +65,43 @@ public class Employee
 		}
 		private static void buyStock() throws FileNotFoundException, UnsupportedEncodingException
 			{
-				System.out.println("What stock do you want to buy?");
-				for(int i=0; i<InventoryMain.store.size();i++)
-					{
-						System.out.println(i+ InventoryMain.store.get(i).getName());
-					}
-				Scanner userInput2 = new Scanner(System.in);
-				buyingstockChoice= userInput2.nextInt();
-				
-				try 
-					{ 
-						PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("Inventory.txt", true)));
-						out.println("");
-						out.println("the text");
-						out.close();
-					}
-			  catch (IOException e) 
-					{  
-						println(e);
-					}
-					}
-			private static void println(IOException e)
+			System.out.println("What stock do you want to buy?");
+			for(int i=0; i<InventoryMain.store.size();i++)
 				{
-					System.out.println("oops,there is a mistake.");
+					System.out.println(i+" "+ InventoryMain.store.get(i).getName());
 				}
+			Scanner userInput2 = new Scanner(System.in);
+			buyingstockChoice= userInput2.nextInt();
+			
+			System.out.println("How many copies do you want.");
+			Scanner userInput3 = new Scanner(System.in);
+			stockCopies= userInput3.nextInt();
+			int oldCopies=Integer.parseInt(InventoryMain.store.get(buyingstockChoice).getCopies());
+			String newCopies=String.valueOf(oldCopies+stockCopies);
+			InventoryMain.store.get(buyingstockChoice).setCopies(newCopies);
+			System.out.println("You just change the copies to "+newCopies);
+			try 
+				{ 
+					PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("Inventory.txt", true)));
+					out.println("");
+					out.println(InventoryMain.store.get(buyingstockChoice).getName()+" change the numbers of copies to "+newCopies);
+					out.close();
+				}
+		  catch (IOException e) 
+				{  
+					println(e);
+				}
+			askUserWhatToDo();
+
+		
+		
+			
 	
-	}
+			}
+
+		private static void println(IOException e) {
+			// TODO Auto-generated method stub
+			
+		}
+		}
+
