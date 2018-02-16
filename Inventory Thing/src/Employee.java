@@ -41,7 +41,7 @@ public class Employee
 				}
 			System.out.println();
 			System.out.println("What do you want to do?");
-			System.out.println("1. Buy Stock");
+			System.out.println("1. Buy product for the store.");
 			System.out.println("2. Exit the website.");
 			System.out.println();
 			while(keepAsking) 
