@@ -14,8 +14,8 @@ public class InventoryMain
 		public static void runProgram() throws FileNotFoundException, UnsupportedEncodingException 
 		{
 			System.out.println("Are you a buyer or an employee?");
-			System.out.println("1) Buyer");
-			System.out.println("2) Employee");
+			System.out.println("1) Buyer.");
+			System.out.println("2) Employee.");
 			System.out.println();
 			try
 				{
@@ -36,7 +36,7 @@ public class InventoryMain
 					Employee.employ();
 					}
 				}
-			catch(InputMismatchException nice)
+			catch(InputMismatchException ex)
 				{
 					System.out.println("That's not a valid answer.");
 					System.out.println();
