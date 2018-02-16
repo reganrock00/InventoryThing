@@ -84,6 +84,7 @@ public class Employee
 			String newCopies = String.valueOf(oldCopies + stockCopies);
 			InventoryMain.store.get(buyingstockChoice).setCopies(newCopies);
 			System.out.println("We now have "+ newCopies + " of that product.");
+			TextWriter.refresh();
 			try 
 				{ 
 					PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("Inventory.txt", true)));
