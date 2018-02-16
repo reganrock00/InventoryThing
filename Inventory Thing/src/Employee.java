@@ -57,6 +57,8 @@ public class Employee
 					else if(userChoice==2)
 						{
 							System.out.println("Bye bye!!!");
+							System.out.println();
+							InventoryMain.runProgram();
 							break;
 						}
 					else
@@ -83,7 +85,7 @@ public class Employee
 			int oldCopies = Integer.parseInt(InventoryMain.store.get(buyingstockChoice).getCopies());
 			String newCopies = String.valueOf(oldCopies + stockCopies);
 			InventoryMain.store.get(buyingstockChoice).setCopies(newCopies);
-			System.out.println("We now have "+ newCopies + " of that product.");
+			System.out.println("We now have "+ newCopies + " copies of that product.");
 			TextWriter.refresh();
 			try 
 				{ 
