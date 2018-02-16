@@ -8,15 +8,15 @@ public class Employee
 		private static int password;
 		private static boolean keepAsking=true;
 		
-		public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException 
+		public static void employ() throws FileNotFoundException, UnsupportedEncodingException 
 		{
-			InventoryMain.fillArray();
-			meetTHeUsers();
+
+			meetTheUser();
 			
 			
 		}
 
-		public static void meetTHeUsers()throws FileNotFoundException, UnsupportedEncodingException
+		public static void meetTheUser()throws FileNotFoundException, UnsupportedEncodingException
 		{
 			System.out.println("what is the password");
 				Scanner userInput = new Scanner(System.in);
@@ -28,7 +28,7 @@ public class Employee
 				else
 					{
 						System.out.println("Wrong, try it again");
-						meetTHeUsers();
+						meetTheUser();
 					}
 		}
 		public static void askUserWhatToDo() throws FileNotFoundException, UnsupportedEncodingException
@@ -36,7 +36,7 @@ public class Employee
 			System.out.println("Hi, here is the stock for us.");
 			for(int i=0; i<InventoryMain.store.size();i++)
 				{
-					System.out.println(InventoryMain.store.get(i).getName()+" "+InventoryMain.store.get(i).getSkus()+" "+InventoryMain.store.get(i).getConsole()+" "+InventoryMain.store.get(i).getWhole()+" "+InventoryMain.store.get(i).getSell());
+					System.out.println(InventoryMain.store.get(i).getName()+" "+InventoryMain.store.get(i).getSkus()+" "+InventoryMain.store.get(i).getConsole()+" "+InventoryMain.store.get(i).getWhole()+" "+InventoryMain.store.get(i).getSell() +" "+ InventoryMain.store.get(i).getCopies());
 				}
 			
 			System.out.println("What do you want to do?");

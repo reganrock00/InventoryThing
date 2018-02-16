@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 public class Buyer
 	{
@@ -8,7 +9,7 @@ public class Buyer
 		private static String keyword;
 		private static ArrayList <Game> shoppingCart = new ArrayList <Game>();
 		private static ArrayList <Game> searcher = new ArrayList<Game>();
-		public static void buy()
+		public static void buy() throws FileNotFoundException, UnsupportedEncodingException
 			{
 			greetUser();
 			while(stillShopping)
@@ -34,8 +35,9 @@ public class Buyer
 						case 4:
 							{
 							System.out.println("Understandable. Have a great day!");
+							System.out.println();
 							stillShopping = false;
-							//InventoryMain.main(null);
+							InventoryMain.runProgram();
 							break;
 							}
 						case 5:
@@ -107,7 +109,7 @@ public class Buyer
 				for(int i = 0; i < shoppingCart.size(); i++)
 					{
 					System.out.println();
-					System.out.println(InventoryMain.store.get(i).getName() + " for the " + InventoryMain.store.get(i).getConsole() + ".");
+					System.out.println(shoppingCart.get(i).getName() + " for the " + shoppingCart.get(i).getConsole() + ".");
 					}
 				}
 			else
@@ -124,15 +126,14 @@ public class Buyer
 			try
 				{
 				Scanner kW = new Scanner(System.in);
-				keyword = kW.nextLine();
+				keyword = kW.nextLine().toLowerCase();
 				System.out.println();
 				System.out.println("Let me check if we have that...");
 				for(int j = 0, searchIndex = 1; j < InventoryMain.store.size(); j++)
 					{
-						if(InventoryMain.store.get(j).getName().contains(keyword))
+						if(InventoryMain.store.get(j).getName().toLowerCase().contains(keyword))
 							{
 							searcher.add(InventoryMain.store.get(j));
-							System.out.println("We have " + InventoryMain.store.get(j).getName() + " which matches your search criteria.");
 							}
 					}
 				}
@@ -153,7 +154,7 @@ public class Buyer
 				System.out.println();
 				for(int j = 0, searchIn = 1; j < searcher.size(); j++, searchIn++)
 					{
-					System.out.println(searcher.get(j).getName());
+					System.out.println(searchIn + ") " + searcher.get(j).getName());
 					}
 				System.out.println();
 				System.out.println("Would you like to add any of these to your cart?");
@@ -161,11 +162,46 @@ public class Buyer
 				}
 			}
 
-		private static void pay()
+		private static void pay() throws FileNotFoundException, UnsupportedEncodingException
 			{
 			if(shoppingCart.size() > 0)
 				{
-				
+				int total = 0;
+				for(int j = 0; j < shoppingCart.size(); j++)
+					{
+					total += Integer.parseInt(InventoryMain.store.get(j).getSell());
+					}
+				System.out.println("Okay, your total will be: $" + total + ".");
+				System.out.println();
+				System.out.println("Your payment is being processed.");
+				System.out.println();
+				for(int j = 0; j < 5; j++)
+					{
+					System.out.print(". ");
+					try 
+						{
+						TimeUnit.SECONDS.sleep(1);
+						} 
+					catch (InterruptedException e) 
+						{
+						e.printStackTrace();
+						}
+					}
+				System.out.println();
+				System.out.println();
+				System.out.println("Your payment was approved! Have a nice day!");
+				System.out.println();
+				stillShopping = false;
+				InventoryMain.runProgram();
+				for(int j = 0; j < shoppingCart.size(); j++)
+					{
+					String temp = InventoryMain.store.get(j).getCopies();
+					int temp2 = Integer.parseInt(temp);
+					temp2--;
+					temp += temp2;
+					InventoryMain.store.get(j).setCopies(temp);
+					}
+				TextWriter.refresh();
 				}
 			else
 				{
@@ -199,7 +235,7 @@ public class Buyer
 							shoppingCart.add(InventoryMain.store.get(choice - 1));
 							System.out.println();
 							System.out.println("Okay, I will add that to your cart.");
-							askIfBuyAgain();
+							askIfBuyAgainL();
 							}
 					}
 				catch(InputMismatchException catcher)
@@ -218,11 +254,49 @@ public class Buyer
 		
 		private static void addToCartS()
 			{
-			//finish pay, include copies, write to text file
+			System.out.println("Which game from this list would you like to add to your shopping cart?");
+			System.out.println("Type in the number of the game now.");
+			System.out.println("If you don't want to buy a game from this list, just type 0.");
+			System.out.println();
+			try
+				{
+					Scanner fred = new Scanner(System.in);
+					int choice = fred.nextInt();
+					if(choice <= -1)
+						{
+						System.out.println("That's not a valid answer!");
+						System.out.println();
+						addToCartS();
+						}
+					else if(choice == 0)
+						{
+						System.out.println();
+						System.out.println("Okay, I will return you to the main menu.");
+						}
+					else
+						{
+						shoppingCart.add(searcher.get(choice - 1));
+						System.out.println();
+						System.out.println("Okay, I will add that to your cart.");
+						askIfBuyAgainS();
+						}
+				}
+			catch(InputMismatchException catcher)
+				{
+					System.out.println("That's not a valid answer!");
+					System.out.println();
+					addToCartS();
+				}
+			catch(IndexOutOfBoundsException cat)
+				{
+					System.out.println("That's not a valid answer!");
+					System.out.println();
+					addToCartS();
+				}
 				
 			}
-		
-		private static void askIfBuyAgain()
+
+		private static void askIfBuyAgainL()
 			{
 				System.out.println("Would you like to add another game from this list?");
 				System.out.println("1) Yes.");
@@ -230,13 +304,13 @@ public class Buyer
 				System.out.println();
 				try
 					{
-						Scanner ohBoy = new Scanner(System.in);
-						int yesOrNo = ohBoy.nextInt();
+						Scanner userChoice = new Scanner(System.in);
+						int yesOrNo = userChoice.nextInt();
 						if(yesOrNo < 1 || yesOrNo > 2)
 							{
 							System.out.println("That's not a valid answer!");
 							System.out.println();
-							askIfBuyAgain();
+							askIfBuyAgainL();
 							}
 						else if(yesOrNo == 2)
 							{
@@ -252,8 +326,41 @@ public class Buyer
 					{
 					System.out.println("That's not a valid answer!");
 					System.out.println();
-					askIfBuyAgain();
+					askIfBuyAgainL();
 					}
 			}
+		private static void askIfBuyAgainS() 
+		{
+			System.out.println("Would you like to add another game from this list?");
+			System.out.println("1) Yes.");
+			System.out.println("2) No.");
+			System.out.println();
+			try
+				{
+					Scanner ohBoy = new Scanner(System.in);
+					int yesOrNo = ohBoy.nextInt();
+					if(yesOrNo < 1 || yesOrNo > 2)
+						{
+						System.out.println("That's not a valid answer!");
+						System.out.println();
+						askIfBuyAgainS();
+						}
+					else if(yesOrNo == 2)
+						{
+						System.out.println();
+						System.out.println("Okay, I will return you to the main menu.");
+						}
+					else
+						{
+						addToCartS();
+						}
+				}
+			catch(InputMismatchException x)
+				{
+				System.out.println("That's not a valid answer!");
+				System.out.println();
+				askIfBuyAgainS();
+				}
+		}
 
 	}
