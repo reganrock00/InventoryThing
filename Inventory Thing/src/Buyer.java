@@ -72,7 +72,7 @@ public class Buyer
 					Scanner userInput = new Scanner(System.in);
 					userChoice = userInput.nextInt();
 				}
-			catch(InputMismatchException yes)
+			catch(InputMismatchException doNot)
 				{
 				System.out.println();
 				System.out.println("That's not an option!");
@@ -145,7 +145,7 @@ public class Buyer
 				}
 			if(searcher.size() == 0)
 				{
-				System.out.println("Sorry, we couldn't find anything that matches your search criteria.");
+				System.out.println("Sorry, I couldn't find anything that matches your search criteria.");
 				}
 			else
 				{
@@ -171,7 +171,7 @@ public class Buyer
 					{
 					total += Integer.parseInt(InventoryMain.store.get(j).getSell());
 					}
-				System.out.println("Okay, your total will be: $" + total + ".");
+				System.out.println("Okay, your total will be $" + total + ".");
 				System.out.println();
 				System.out.println("Your payment is being processed.");
 				System.out.println();
@@ -213,12 +213,12 @@ public class Buyer
 			{
 				System.out.println("Which game from this list would you like to add to your shopping cart?");
 				System.out.println("Type in the number of the game now.");
-				System.out.println("If you don't want to buy a game from this list, just type 0.");
+				System.out.println("(If you don't want to buy a game from this list, just type 0.)");
 				System.out.println();
 				try
 					{
-						Scanner fred = new Scanner(System.in);
-						int choice = fred.nextInt();
+						Scanner freddy = new Scanner(System.in);
+						int choice = freddy.nextInt();
 						if(choice <= -1)
 							{
 							System.out.println("That's not a valid answer!");
@@ -256,7 +256,7 @@ public class Buyer
 			{
 			System.out.println("Which game from this list would you like to add to your shopping cart?");
 			System.out.println("Type in the number of the game now.");
-			System.out.println("If you don't want to buy a game from this list, just type 0.");
+			System.out.println("(If you don't want to buy a game from this list, just type 0.)");
 			System.out.println();
 			try
 				{
@@ -355,7 +355,7 @@ public class Buyer
 						addToCartS();
 						}
 				}
-			catch(InputMismatchException x)
+			catch(InputMismatchException gotcha)
 				{
 				System.out.println("That's not a valid answer!");
 				System.out.println();
