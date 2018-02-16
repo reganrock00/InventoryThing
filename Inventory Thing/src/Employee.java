@@ -39,10 +39,11 @@ public class Employee
 				{
 					System.out.println(InventoryMain.store.get(i).getName()+" "+InventoryMain.store.get(i).getSkus()+" "+InventoryMain.store.get(i).getConsole()+" "+InventoryMain.store.get(i).getWhole()+" "+InventoryMain.store.get(i).getSell() +" "+ InventoryMain.store.get(i).getCopies());
 				}
-			
+			System.out.println();
 			System.out.println("What do you want to do?");
 			System.out.println("1. Buy Stock");
 			System.out.println("2. Exit the website.");
+			System.out.println();
 			while(keepAsking) 
 				{
 					
@@ -66,7 +67,8 @@ public class Employee
 		}
 		private static void buyStock() throws FileNotFoundException, UnsupportedEncodingException
 			{
-			System.out.println("What do you want to buy?");
+			System.out.println("What product do you want to buy?");
+			System.out.println();
 			for(int i=0; i<InventoryMain.store.size();i++)
 				{
 					System.out.println(i+" "+ InventoryMain.store.get(i).getName());
@@ -75,6 +77,7 @@ public class Employee
 			buyingstockChoice= userInput2.nextInt();
 			
 			System.out.println("How many copies of it do you want?");
+			System.out.println();
 			Scanner userInput3 = new Scanner(System.in);
 			stockCopies = userInput3.nextInt();
 			int oldCopies = Integer.parseInt(InventoryMain.store.get(buyingstockChoice).getCopies());
@@ -85,7 +88,7 @@ public class Employee
 				{ 
 					PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("Inventory.txt", true)));
 					out.println("");
-					out.println(InventoryMain.store.get(buyingstockChoice).getName()+" change the numbers of copies to " +newCopies);
+					out.println(InventoryMain.store.get(buyingstockChoice).getName()+" now has " + newCopies + ".");
 					out.close();
 				}
 		  catch (IOException e) 
