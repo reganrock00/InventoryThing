@@ -18,3 +18,5 @@ Madden           01233           Playstation             1               30     
 Title:           Skus:           Console:        Wholesale:           Sell:            Copies:
 Minecraft           01232           PC             10               9               100
 
+
+Monster Hunter change the numbers of copies to 110
